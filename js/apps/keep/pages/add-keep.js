@@ -29,15 +29,14 @@ export default {
         setKeepType(keepType) {
             this.keep.type = keepType
             if (keepType === 'todo') this.placeholderTxt = 'Enter a comma separated list'
-            if (keepType === 'img') this.placeholderTxt = 'Enter an image Url'
-            if (keepType === 'video') this.placeholderTxt = 'Enter a video Url'
-            if (keepType === 'txt') this.placeholderTxt = 'Enter any text'
+           else if (keepType === 'img') this.placeholderTxt = 'Enter an image Url'
+           else if (keepType === 'video') this.placeholderTxt = 'Enter a video Url'
+           else if (keepType === 'txt') this.placeholderTxt = 'Enter any text'
             if (this.keep.data) this.saveKeep()
         },
         saveKeep() {
             if (this.keep.data !== null) keepService.addKeep(this.keep)
             this.keep.data = null
-            // this.$router.push('/mail-app/compose')
         }
     },
  

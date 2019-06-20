@@ -2,8 +2,6 @@
 import emailPreview from '../cmps/email-preview-cmp.js'
 import emailService from '../services/mail-service.js'
 
-
-
 export default {
     template: `
     <section class="email-list-show">
@@ -33,18 +31,15 @@ export default {
             },
         }
     },
-
     methods: {
-
-
     },
-
     computed: {
         //to do - fins a better way to filter whitout repeating code
         filteredEmails() {
             if (!this.emails) return
             if (this.filterBy.options === 'all') {
                 var filtered = this.emails.filter(email => {
+                    
                     return email.type === this.mailBoxType &&
                         (email.body.toLowerCase().includes(this.filterBy.searchTxt.toLowerCase()) ||
                             email.subject.toLowerCase().includes(this.filterBy.searchTxt.toLowerCase()) ||
@@ -89,6 +84,7 @@ export default {
 
     watch: {
         '$route.path': function() {
+            console.log(this.$router.currentRoute);
             this.mailBoxType = this.$router.currentRoute.name
             this.filterBy.options = 'all'
         },

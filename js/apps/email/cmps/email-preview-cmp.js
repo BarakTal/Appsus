@@ -83,9 +83,9 @@ export default {
         readEmail() {
             this.isCompressed = !this.isCompressed;
             if (this.email.isRead === true) return
+            mailService.toggleUnread(this.email)
+            var unread = mailService.updateNumOfUnread(-1)
             setTimeout(() => {
-                mailService.toggleUnread(this.email)
-                var unread = mailService.updateNumOfUnread(-1)
                 eventBus.$emit(EMAILS_UNREAD, unread)
 
             }, 700);
